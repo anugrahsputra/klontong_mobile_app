@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:logging/logging.dart';
-
-import '../../core.dart';
+import 'package:klontong_mobile_app/core/core.dart';
 
 class AppNavigator {
   final Logger log = Logger("App Navigator");
@@ -58,20 +57,27 @@ class AppNavigator {
   }
 
   void goToLogin(BuildContext context) {
-   if(!canNavigate(context))  return;
+    if (!canNavigate(context)) return;
 
-   pushNamedAndRemoveUntil(context, AppPages.login);
+    pushNamedAndRemoveUntil(context, AppPages.login);
   }
 
   void goToRegister(BuildContext context) {
-    if(!canNavigate(context))  return;
+    if (!canNavigate(context)) return;
 
     pushNamed(context, AppPages.register);
   }
 
   void goToMain(BuildContext context) {
-    if(!canNavigate(context)) return;
+    if (!canNavigate(context)) return;
 
     pushNamedAndRemoveUntil(context, AppPages.main);
   }
+
+  void goToProduct(BuildContext context) {
+    if (!canNavigate(context)) return;
+
+    pushNamedAndRemoveUntil(context, AppPages.product);
+  }
 }
+

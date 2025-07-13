@@ -4,9 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:formz/formz.dart';
 import 'package:logging/logging.dart';
-import 'package:my_boilerplate/core/core.dart';
-import 'package:my_boilerplate/di.dart';
-import 'package:my_boilerplate/features/auth/auth.dart';
+import 'package:klontong_mobile_app/core/core.dart';
+import 'package:klontong_mobile_app/di.dart';
+import 'package:klontong_mobile_app/features/auth/auth.dart';
 
 part 'login_view.component.dart';
 
@@ -35,11 +35,14 @@ class _LoginViewState extends State<LoginView> {
         listener: (context, state) {
           if (state.errorMessage != null) {
             ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text(state.errorMessage!), behavior: SnackBarBehavior.floating),
+              SnackBar(
+                content: Text(state.errorMessage!),
+                behavior: SnackBarBehavior.floating,
+              ),
             );
             context.read<LoginBloc>().add(const LoginOnError());
           } else if (state.status == FormzSubmissionStatus.success) {
-            appNavigator.goToMain(context);
+            appNavigator.goToProduct(context);
           }
         },
         child: BlocBuilder<LoginBloc, LoginState>(

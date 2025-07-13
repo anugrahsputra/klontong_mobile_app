@@ -50,8 +50,8 @@ abstract class AppLogging {
         // Send to Android logcat / system console
         log(formattedMessage + errorString + stackTraceString, name: name);
 
-        // Also print to terminal (Neovim, CLI, etc.)
-        debugPrint('[$name] $formattedMessage$errorString$stackTraceString');
+        // // Also print to terminal (Neovim, CLI, etc.)
+        // debugPrint('[$name] $formattedMessage$errorString$stackTraceString');
       });
 
       AppLogging.isInitialize = true;

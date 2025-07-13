@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:my_boilerplate/core/core.dart';
-import 'package:my_boilerplate/di.dart';
+import 'package:klontong_mobile_app/core/core.dart';
+import 'package:klontong_mobile_app/di.dart';
 
 import 'app.dart';
 
@@ -12,3 +12,4 @@ Future<void> appInitialize() async {
 
   runApp(MyApp());
 }
+

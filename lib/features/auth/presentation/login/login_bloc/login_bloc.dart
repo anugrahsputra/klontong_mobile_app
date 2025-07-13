@@ -2,8 +2,8 @@ import 'package:bloc/bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:logging/logging.dart';
-import 'package:my_boilerplate/core/core.dart';
-import 'package:my_boilerplate/features/auth/auth.dart';
+import 'package:klontong_mobile_app/core/core.dart';
+import 'package:klontong_mobile_app/features/auth/auth.dart';
 
 part 'login_bloc.freezed.dart';
 

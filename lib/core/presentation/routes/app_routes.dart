@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
-import 'package:my_boilerplate/core/core.dart';
-import 'package:my_boilerplate/features/auth/auth.dart';
-import 'package:my_boilerplate/features/general/general.dart';
+import 'package:klontong_mobile_app/core/core.dart';
+import 'package:klontong_mobile_app/features/auth/auth.dart';
+import 'package:klontong_mobile_app/features/general/general.dart';
+import 'package:klontong_mobile_app/features/product/product.dart';
 
 abstract class AppRoutes {
   static String get initial => AppPages.login;
@@ -11,5 +12,6 @@ abstract class AppRoutes {
     AppPages.register: (context) => const RegisterView(),
 
     AppPages.main: (context) => const MainView(),
+    AppPages.product: (context) => const ProductView(),
   };
 }

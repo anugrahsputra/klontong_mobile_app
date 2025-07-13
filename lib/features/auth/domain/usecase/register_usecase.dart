@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
-import 'package:my_boilerplate/core/core.dart';
-import 'package:my_boilerplate/features/auth/auth.dart';
+import 'package:klontong_mobile_app/core/core.dart';
+import 'package:klontong_mobile_app/features/auth/auth.dart';
 
 class RegisterUsecase {
   final AuthRepository repository;
@@ -11,3 +11,4 @@ class RegisterUsecase {
     return await repository.register(registerReq);
   }
 }
+

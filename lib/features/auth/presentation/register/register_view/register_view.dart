@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:formz/formz.dart';
-import 'package:my_boilerplate/app/app.dart';
-import 'package:my_boilerplate/core/core.dart';
-import 'package:my_boilerplate/di.dart';
-import 'package:my_boilerplate/features/auth/auth.dart';
+import 'package:klontong_mobile_app/app/app.dart';
+import 'package:klontong_mobile_app/core/core.dart';
+import 'package:klontong_mobile_app/di.dart';
+import 'package:klontong_mobile_app/features/auth/auth.dart';
 
 part 'register_view.component.dart';
 
@@ -34,13 +34,19 @@ class _RegisterViewState extends State<RegisterView> {
         listener: (context, state) {
           if (state.errorMessage != null) {
             ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text(state.errorMessage!), behavior: SnackBarBehavior.floating),
+              SnackBar(
+                content: Text(state.errorMessage!),
+                behavior: SnackBarBehavior.floating,
+              ),
             );
 
             context.read<RegisterBloc>().add(const RegisterOnError());
           } else if (state.status == FormzSubmissionStatus.success) {
             scaffoldMessengerKey.currentState?.showSnackBar(
-              SnackBar(content: Text("Register Success"), behavior: SnackBarBehavior.floating),
+              SnackBar(
+                content: Text("Register Success"),
+                behavior: SnackBarBehavior.floating,
+              ),
             );
             appNavigator.back(context);
           }
@@ -81,3 +87,4 @@ class _RegisterViewState extends State<RegisterView> {
     );
   }
 }
+

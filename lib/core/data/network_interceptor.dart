@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:logging/logging.dart';
-import 'package:my_boilerplate/core/core.dart';
+import 'package:klontong_mobile_app/core/core.dart';
 
 import '../../di.dart';
 

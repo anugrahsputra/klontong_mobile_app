@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:my_boilerplate/core/core.dart';
+import 'package:klontong_mobile_app/core/core.dart';
 
 Future<Either<Failure, T>> safeCall<T>(Future<T> Function() call) async {
   try {
@@ -24,7 +24,7 @@ Future<Either<Failure, T>> safeCall<T>(Future<T> Function() call) async {
     } else if (error is AuthFailure) {
       return Left(AuthFailure(message: error.message));
     } else {
-      return const Left(UnknownFailure(message: "Unknown Dio error"));
+      return Left(UnknownFailure(message: error.toString()));
     }
   } on CacheException catch (e) {
     return Left(CacheFailure(message: e.message));
