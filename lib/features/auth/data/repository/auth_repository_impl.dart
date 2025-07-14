@@ -6,16 +6,20 @@ import 'package:klontong_mobile_app/features/auth/data/datasource/auth_datasourc
 
 class AuthRepositoryImpl implements AuthRepository {
   final AuthDataSource dataSource;
+  final TokenManager tokenManager;
   final Logger log = Logger("Auth Repository");
 
-  AuthRepositoryImpl({required this.dataSource});
+  AuthRepositoryImpl({required this.dataSource, required this.tokenManager});
 
   @override
   Future<Either<Failure, Login>> login(LoginReqDto loginReq) async {
     final result = await dataSource.login(loginReq);
     return result.fold(
       (failure) => Left(failure),
-      (data) => Right(data.toLogin()),
+      (data) {
+        tokenManager.saveToken(data.token);
+        return Right(data.toLogin());
+      },
     );
   }
 
