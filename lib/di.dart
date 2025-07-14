@@ -9,6 +9,7 @@ import 'package:klontong_mobile_app/features/auth/auth.dart';
 import 'package:klontong_mobile_app/features/auth/data/datasource/auth_datasource.dart';
 import 'package:klontong_mobile_app/features/product/product.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:sentry_dio/sentry_dio.dart';
 
 import 'app/app_cubit.dart';
 
@@ -52,7 +53,8 @@ Future<void> setup() async {
                 hitCacheOnErrorExcept: [],
               ),
             ),
-          ]),
+          ])
+          ..addSentry(),
   );
 
   di.registerFactory<FlutterSecureStorage>(() => FlutterSecureStorage());
