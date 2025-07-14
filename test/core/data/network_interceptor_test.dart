@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:mockito/mockito.dart';
-import 'package:my_boilerplate/core/core.dart';
+import 'package:klontong_mobile_app/core/core.dart';
 
 import '../../helper/mock.dart';
 

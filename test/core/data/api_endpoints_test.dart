@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:my_boilerplate/core/data/api_endpoints.dart';
+import 'package:klontong_mobile_app/core/data/api_endpoints.dart';
 
 void main() {
   group('ApiEndpoints', () {

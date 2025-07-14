@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:mockito/annotations.dart';
-import 'package:my_boilerplate/core/core.dart';
+import 'package:klontong_mobile_app/core/core.dart';
 
 export 'mock.mocks.dart';
 
@@ -19,4 +19,3 @@ export 'mock.mocks.dart';
   MockSpec<ErrorInterceptorHandler>(),
 ])
 void main(List<String> args) {}
-

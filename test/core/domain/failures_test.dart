@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:my_boilerplate/core/domain/failures.dart';
+import 'package:klontong_mobile_app/core/domain/failures.dart';
 
 void main() {
   group('Failures', () {

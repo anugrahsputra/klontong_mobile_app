@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:my_boilerplate/core/core.dart';
+import 'package:klontong_mobile_app/core/core.dart';
 
 void main() {
   group('Exceptions', () {
