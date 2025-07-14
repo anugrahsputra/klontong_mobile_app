@@ -5,9 +5,9 @@ import 'package:klontong_mobile_app/features/product/product.dart';
 abstract class ProductDatasource {
   Future<Either<Failure, List<ProductDto>>> getProduct();
 
-  Future<Either<Failure, ProductDto>> getProductDetail(int id);
+  Future<Either<Failure, ProductDto>> getProductDetail(String id);
 
-  Future<Either<Failure, String>> addProduct(ProductDto product);
+  Future<Either<Failure, ProductDto>> addProduct(ProductReq product);
 }
 
 class ProductDatasourceImpl implements ProductDatasource {
@@ -16,10 +16,10 @@ class ProductDatasourceImpl implements ProductDatasource {
   ProductDatasourceImpl(this.client);
 
   @override
-  Future<Either<Failure, String>> addProduct(ProductDto product) async {
+  Future<Either<Failure, ProductDto>> addProduct(ProductReq product) async {
     return await client.postParsedSafe(
       ApiEndpoints.product,
-      converter: (json) => json['message'],
+      converter: (json) => ProductDto.fromJson(json),
       data: product.toJson(),
     );
   }
@@ -33,7 +33,7 @@ class ProductDatasourceImpl implements ProductDatasource {
   }
 
   @override
-  Future<Either<Failure, ProductDto>> getProductDetail(int id) async {
+  Future<Either<Failure, ProductDto>> getProductDetail(String id) async {
     return await client.getParsedSafe(
       "${ApiEndpoints.product}/$id",
       converter: (json) => ProductDto.fromJson(json),

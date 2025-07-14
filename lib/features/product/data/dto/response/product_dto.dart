@@ -8,8 +8,7 @@ part 'product_dto.g.dart';
 abstract class ProductDto with _$ProductDto {
   @JsonSerializable(explicitToJson: true)
   const factory ProductDto({
-    @JsonKey(name: '_id') String? ids,
-    @JsonKey(name: "id") required int id,
+    @JsonKey(name: '_id') String? id,
     @JsonKey(name: "CategoryId") required int categoryId,
     @JsonKey(name: "categoryName") required String categoryName,
     @JsonKey(name: "sku") required String sku,

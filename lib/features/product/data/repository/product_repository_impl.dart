@@ -8,9 +8,9 @@ class ProductRepositoryImpl implements ProductRepository {
   ProductRepositoryImpl({required this.datasource});
 
   @override
-  Future<Either<Failure, String>> addProduct(ProductDto product) async {
+  Future<Either<Failure, Product>> addProduct(ProductReq product) async {
     final result = await datasource.addProduct(product);
-    return result.fold((failure) => Left(failure), (data) => Right(data));
+    return result.fold((failure) => Left(failure), (data) => Right(data.toDomain()));
   }
 
   @override
@@ -35,8 +35,31 @@ class ProductRepositoryImpl implements ProductRepository {
   }
 
   @override
-  Future<Either<Failure, Product>> getProductDetail(int id) async {
-    final reseult = await datasource.getProductDetail(id);
-    return reseult.fold((failure) => Left(failure), (data) => Right(data.toDomain()));
+  Future<Either<Failure, Product>> getProductDetail(String id) async {
+    final result = await datasource.getProductDetail(id);
+    return result.fold((failure) => Left(failure), (data) => Right(data.toDomain()));
+  }
+
+  @override
+  Future<Either<Failure, List<Product>>> searchProduct({
+    int pageKey = 0,
+    required int pageSize,
+    String? search,
+  }) async {
+    final result = await datasource.getProduct();
+
+    return result.fold((failure) => Left(failure), (data) {
+      final products = data.map((e) => e.toDomain()).toList();
+
+      final filtered = (search == null || search.isEmpty)
+          ? products
+          : products.where((p) => p.name.toLowerCase().contains(search.toLowerCase())).toList();
+
+      final start = pageKey * pageSize;
+      if (start >= filtered.length) return const Right([]);
+      final end = (start + pageSize).clamp(0, filtered.length);
+
+      return Right(filtered.sublist(start, end));
+    });
   }
 }

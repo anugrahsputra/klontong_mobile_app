@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$Product {
 
- int get id; int get categoryId; String get categoryName; String get sku; String get name; String get description; int get weight; int get width; int get length; int get height; String get image; int get harga;
+ String? get id; int get categoryId; String get categoryName; String get sku; String get name; String get description; int get weight; int get width; int get length; int get height; String get image; int get harga;
 /// Create a copy of Product
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -46,7 +46,7 @@ abstract mixin class $ProductCopyWith<$Res>  {
   factory $ProductCopyWith(Product value, $Res Function(Product) _then) = _$ProductCopyWithImpl;
 @useResult
 $Res call({
- int id, int categoryId, String categoryName, String sku, String name, String description, int weight, int width, int length, int height, String image, int harga
+ String? id, int categoryId, String categoryName, String sku, String name, String description, int weight, int width, int length, int height, String image, int harga
 });
 
 
@@ -63,10 +63,10 @@ class _$ProductCopyWithImpl<$Res>
 
 /// Create a copy of Product
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? categoryId = null,Object? categoryName = null,Object? sku = null,Object? name = null,Object? description = null,Object? weight = null,Object? width = null,Object? length = null,Object? height = null,Object? image = null,Object? harga = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? categoryId = null,Object? categoryName = null,Object? sku = null,Object? name = null,Object? description = null,Object? weight = null,Object? width = null,Object? length = null,Object? height = null,Object? image = null,Object? harga = null,}) {
   return _then(_self.copyWith(
-id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as int,categoryId: null == categoryId ? _self.categoryId : categoryId // ignore: cast_nullable_to_non_nullable
+id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String?,categoryId: null == categoryId ? _self.categoryId : categoryId // ignore: cast_nullable_to_non_nullable
 as int,categoryName: null == categoryName ? _self.categoryName : categoryName // ignore: cast_nullable_to_non_nullable
 as String,sku: null == sku ? _self.sku : sku // ignore: cast_nullable_to_non_nullable
 as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
@@ -88,10 +88,10 @@ as int,
 
 
 class _Product implements Product {
-  const _Product({required this.id, required this.categoryId, required this.categoryName, required this.sku, required this.name, required this.description, required this.weight, required this.width, required this.length, required this.height, required this.image, required this.harga});
+  const _Product({this.id, required this.categoryId, required this.categoryName, required this.sku, required this.name, required this.description, required this.weight, required this.width, required this.length, required this.height, required this.image, required this.harga});
   
 
-@override final  int id;
+@override final  String? id;
 @override final  int categoryId;
 @override final  String categoryName;
 @override final  String sku;
@@ -134,7 +134,7 @@ abstract mixin class _$ProductCopyWith<$Res> implements $ProductCopyWith<$Res> {
   factory _$ProductCopyWith(_Product value, $Res Function(_Product) _then) = __$ProductCopyWithImpl;
 @override @useResult
 $Res call({
- int id, int categoryId, String categoryName, String sku, String name, String description, int weight, int width, int length, int height, String image, int harga
+ String? id, int categoryId, String categoryName, String sku, String name, String description, int weight, int width, int length, int height, String image, int harga
 });
 
 
@@ -151,10 +151,10 @@ class __$ProductCopyWithImpl<$Res>
 
 /// Create a copy of Product
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? categoryId = null,Object? categoryName = null,Object? sku = null,Object? name = null,Object? description = null,Object? weight = null,Object? width = null,Object? length = null,Object? height = null,Object? image = null,Object? harga = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = freezed,Object? categoryId = null,Object? categoryName = null,Object? sku = null,Object? name = null,Object? description = null,Object? weight = null,Object? width = null,Object? length = null,Object? height = null,Object? image = null,Object? harga = null,}) {
   return _then(_Product(
-id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as int,categoryId: null == categoryId ? _self.categoryId : categoryId // ignore: cast_nullable_to_non_nullable
+id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String?,categoryId: null == categoryId ? _self.categoryId : categoryId // ignore: cast_nullable_to_non_nullable
 as int,categoryName: null == categoryName ? _self.categoryName : categoryName // ignore: cast_nullable_to_non_nullable
 as String,sku: null == sku ? _self.sku : sku // ignore: cast_nullable_to_non_nullable
 as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable

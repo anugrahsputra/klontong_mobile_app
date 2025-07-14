@@ -7,7 +7,7 @@ class AddProductUsecase {
 
   AddProductUsecase({required this.repository});
 
-  Future<Either<Failure, String>> execute(ProductDto product) async {
+  Future<Either<Failure, Product>> execute(ProductReq product) async {
     return await repository.addProduct(product);
   }
 }

@@ -1,50 +1,62 @@
 part of 'product_view.dart';
 
 class ProductSearchBar extends StatelessWidget {
-  const ProductSearchBar({super.key});
+  const ProductSearchBar({super.key, required this.appNavigator});
+
+  final AppNavigator appNavigator ;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-      decoration: BoxDecoration(color: Colors.grey[200], borderRadius: BorderRadius.circular(25)),
-      child: Row(
-        children: [
-          Icon(Icons.search, color: Colors.grey[600], size: 20),
-          SizedBox(width: 12),
-          Text('Search products', style: TextStyle(color: Colors.grey[600], fontSize: 16)),
-        ],
+    return InkWell(
+      onTap: () => appNavigator.goToSearchProduct(context),
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        decoration: BoxDecoration(color: Colors.grey[200], borderRadius: BorderRadius.circular(25)),
+        child: Row(
+          children: [
+            Icon(Icons.search, color: Colors.grey[600], size: 20),
+            SizedBox(width: 12),
+            Text('Search products', style: TextStyle(color: Colors.grey[600], fontSize: 16)),
+          ],
+        ),
       ),
     );
   }
 }
 
 class ProductList extends StatelessWidget {
-  const ProductList({super.key, required this.productsCubit});
+  const ProductList({super.key, required this.productsCubit, required this.appNavigator});
 
   final ProductsCubit productsCubit;
+  final AppNavigator appNavigator;
 
   @override
   Widget build(BuildContext context) {
-   return Expanded(
+    return Expanded(
       child: BlocBuilder<ProductsCubit, PagingState<int, Product>>(
         builder: (context, state) {
-          return PagedGridView<int, Product>(
-            state: state,
-            fetchNextPage: productsCubit.fetchProducts,
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              crossAxisSpacing: 16,
-              mainAxisSpacing: 16,
-              childAspectRatio: 0.75,
-            ),
-            showNewPageErrorIndicatorAsGridChild: false,
-            showNewPageProgressIndicatorAsGridChild: false,
-            showNoMoreItemsIndicatorAsGridChild: false,
-            builderDelegate: PagedChildBuilderDelegate(
-              itemBuilder: (context, item, index) {
-                return ProductCard(product: item, onTap: () {});
-              },
+          return RefreshIndicator(
+            onRefresh: () async => productsCubit.fetchProducts(),
+            child: PagedGridView<int, Product>(
+              state: state,
+              fetchNextPage: productsCubit.fetchProducts,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                crossAxisSpacing: 16,
+                mainAxisSpacing: 16,
+                childAspectRatio: 0.75,
+              ),
+              showNewPageErrorIndicatorAsGridChild: false,
+              showNewPageProgressIndicatorAsGridChild: false,
+              showNoMoreItemsIndicatorAsGridChild: false,
+              builderDelegate: PagedChildBuilderDelegate(
+                itemBuilder: (context, item, index) {
+                  return ProductCard(
+                    product: item,
+                    onTap: () => appNavigator.goToProductDetail(context, id: item.id!),
+                  );
+                },
+              ),
             ),
           );
         },

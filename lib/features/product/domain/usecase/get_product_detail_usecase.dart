@@ -6,7 +6,7 @@ class GetProductDetailUsecase {
   final ProductRepository repository;
   GetProductDetailUsecase({required this.repository});
 
-  Future<Either<Failure, Product>> execute(int id) async {
+  Future<Either<Failure, Product>> execute(String id) async {
     return await repository.getProductDetail(id);
   }
 }
