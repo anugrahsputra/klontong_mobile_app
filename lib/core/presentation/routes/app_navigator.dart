@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:logging/logging.dart';
 import 'package:klontong_mobile_app/core/core.dart';
+import 'package:logging/logging.dart';
 
 class AppNavigator {
   final Logger log = Logger("App Navigator");
@@ -32,28 +32,24 @@ class AppNavigator {
     Navigator.of(context).pushNamed(routeName, arguments: arguments);
   }
 
-  void pushReplacementNamed(
-    BuildContext context,
-    String routeName, {
-    Object? arguments,
-  }) {
+  void pushReplacementNamed(BuildContext context, String routeName, {Object? arguments}) {
     if (!canNavigate(context)) return;
 
     Navigator.of(context).pushReplacementNamed(routeName, arguments: arguments);
   }
 
-  void pushNamedAndRemoveUntil(
-    BuildContext context,
-    String routeName, {
-    Object? arguments,
-  }) {
+  void pushNamedAndRemoveUntil(BuildContext context, String routeName, {Object? arguments}) {
     if (!canNavigate(context)) return;
 
-    Navigator.of(context).pushNamedAndRemoveUntil(
-      routeName,
-      (route) => false,
-      arguments: arguments,
-    );
+    Navigator.of(
+      context,
+    ).pushNamedAndRemoveUntil(routeName, (route) => false, arguments: arguments);
+  }
+
+  void goToSplash(BuildContext context) {
+    if (!canNavigate(context)) return;
+
+    pushNamedAndRemoveUntil(context, AppPages.splash);
   }
 
   void goToLogin(BuildContext context) {
@@ -79,5 +75,23 @@ class AppNavigator {
 
     pushNamedAndRemoveUntil(context, AppPages.product);
   }
-}
 
+  void goToProductDetail(BuildContext context, {required String id}) {
+    if (!canNavigate(context)) return;
+
+    pushNamed(context, AppPages.productDetail, arguments: {"id": id});
+  }
+
+  void goToAddProduct(BuildContext context) {
+    if (!canNavigate(context)) return;
+
+    pushNamed(context, AppPages.addProduct);
+  }
+
+  void goToSearchProduct(BuildContext context) {
+    if (!canNavigate(context)) return;
+
+    pushNamed(context, AppPages.searchProduct);
+
+  }
+}

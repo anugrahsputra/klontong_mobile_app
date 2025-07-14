@@ -1,4 +1,5 @@
 export 'app_bloc_observer.dart';
+export 'currency_formatter.dart';
 export 'app_logging.dart';
 export 'debouncer.dart';
 export 'json_logging.dart';
