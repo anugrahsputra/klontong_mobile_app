@@ -67,7 +67,7 @@ dependencies:
   objectbox: ^4.3.0
   objectbox_flutter_libs: ^4.3.0
   infinite_scroll_pagination: ^5.1.0
-  flutter_secure_storage: ^4.2.1
+  flutter_secure_storage: ^9.2.4
   crypto: ^3.0.6
 
 dev_dependencies:
@@ -125,4 +125,3 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
-
