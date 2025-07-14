@@ -19,18 +19,15 @@ class ProductRepositoryImpl implements ProductRepository {
     required int pageSize,
   }) async {
     final result = await datasource.getProduct();
+
     return result.fold((failure) => Left(failure), (data) {
       final products = data.map((e) => e.toDomain()).toList();
 
-      final startIndex = pageKey * pageSize;
-      if (startIndex >= products.length) {
-        return const Right([]);
-      }
+      final start = pageKey * pageSize;
+      if (start >= products.length) return const Right([]);
 
-      final endIndex = (startIndex + pageSize).clamp(0, products.length);
-      final paginatedProducts = products.sublist(startIndex, endIndex);
-
-      return Right(paginatedProducts);
+      final end = (start + pageSize).clamp(0, products.length);
+      return Right(products.sublist(start, end));
     });
   }
 

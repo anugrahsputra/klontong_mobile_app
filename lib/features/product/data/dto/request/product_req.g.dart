@@ -7,7 +7,6 @@ part of 'product_req.dart';
 // **************************************************************************
 
 _ProductReq _$ProductReqFromJson(Map<String, dynamic> json) => _ProductReq(
-  id: (json['id'] as num).toInt(),
   categoryId: (json['CategoryId'] as num).toInt(),
   categoryName: json['categoryName'] as String,
   sku: json['sku'] as String,
@@ -23,7 +22,6 @@ _ProductReq _$ProductReqFromJson(Map<String, dynamic> json) => _ProductReq(
 
 Map<String, dynamic> _$ProductReqToJson(_ProductReq instance) =>
     <String, dynamic>{
-      'id': instance.id,
       'CategoryId': instance.categoryId,
       'categoryName': instance.categoryName,
       'sku': instance.sku,

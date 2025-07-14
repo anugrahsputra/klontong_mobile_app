@@ -15,16 +15,25 @@ class TokenManagerImpl extends TokenManager {
 
   @override
   Future<String?> getToken() async {
-    return await storage.read(key: 'token');
+    return await storage.read(key: 'token', aOptions: _androidOptions(), iOptions: _iosOptions());
   }
 
   @override
   Future<void> saveToken(String token) async {
-    await storage.write(key: 'token', value: token);
+    await storage.write(
+      key: 'token',
+      value: token,
+      aOptions: _androidOptions(),
+      iOptions: _iosOptions(),
+    );
   }
 
   @override
   Future<void> deleteToken() async {
-    await storage.delete(key: 'token');
+    await storage.delete(key: 'token', aOptions: _androidOptions(), iOptions: _iosOptions());
   }
+
+  AndroidOptions _androidOptions() => const AndroidOptions(encryptedSharedPreferences: true);
+
+  IOSOptions _iosOptions() => const IOSOptions(accessibility: KeychainAccessibility.first_unlock);
 }

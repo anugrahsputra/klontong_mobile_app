@@ -30,12 +30,6 @@ class _ProductDetailViewState extends State<ProductDetailView> {
             icon: const Icon(Icons.arrow_back, color: Colors.black, size: 28),
             onPressed: () => Navigator.of(context).pop(),
           ),
-          actions: [
-            IconButton(
-              icon: const Icon(Icons.share, color: Colors.black, size: 28),
-              onPressed: () {},
-            ),
-          ],
         ),
         body: BlocBuilder<ProductDetailCubit, ProductDetailState>(
           builder: (context, state) {

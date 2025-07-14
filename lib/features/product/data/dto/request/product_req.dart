@@ -8,7 +8,6 @@ part 'product_req.g.dart';
 abstract class ProductReq with _$ProductReq {
   @JsonSerializable(explicitToJson: true)
   const factory ProductReq({
-    @JsonKey(name: "id") required int id,
     @JsonKey(name: "CategoryId") required int categoryId,
     @JsonKey(name: "categoryName") required String categoryName,
     @JsonKey(name: "sku") required String sku,

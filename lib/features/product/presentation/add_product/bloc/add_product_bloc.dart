@@ -34,7 +34,6 @@ class AddProductBloc extends Bloc<AddProductEvent, AddProductState> {
     emit(state.copyWith(isLoading: true, hasSubmitted: true, errorMessage: null));
 
     final product = ProductReq(
-      id: Random().nextInt(1000000000),
       sku: Random().nextInt(1000000000).toString(),
       name: state.name,
       categoryName: state.categoryName,

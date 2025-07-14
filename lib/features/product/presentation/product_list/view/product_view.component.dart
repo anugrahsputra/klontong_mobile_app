@@ -36,10 +36,10 @@ class ProductList extends StatelessWidget {
       child: BlocBuilder<ProductsCubit, PagingState<int, Product>>(
         builder: (context, state) {
           return RefreshIndicator(
-            onRefresh: () async => productsCubit.fetchProducts(),
+            onRefresh: () async => productsCubit.fetchInitialProducts(),
             child: PagedGridView<int, Product>(
               state: state,
-              fetchNextPage: productsCubit.fetchProducts,
+              fetchNextPage: productsCubit.fetchNextPage,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
                 crossAxisSpacing: 16,
